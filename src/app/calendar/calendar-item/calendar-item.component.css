@@ -1,0 +1,52 @@
+.calendar-lg {
+  height: 133px;
+  width: 133px;
+  background-color: #DACFA1;
+  border-radius: 50%;
+  color: #FFFFEC;
+  vertical-align: middle;
+  padding-top: 39px;
+  font-size: 43px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.calendar-image-lg {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  color: #FFFFEC;
+  vertical-align: middle;
+  margin-top: -16px;
+}
+
+.calendar-sm {
+  height: 75px;
+  width: 75px;
+  background-color: transparent;
+  border-radius: 5%;
+  color: #121212;
+  vertical-align: middle;
+  padding-top: 23px;
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+  cursor: pointer;
+  text-shadow: 1px 1px 5px rgba(124, 102, 0, 0.45);
+  box-shadow: 1px 1px 5px rgba(124, 102, 0, 0.45);
+}
+
+.calendar-image-sm {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: #FFFFEC;
+  vertical-align: middle;
+  margin-top: -5px;
+}
+
+.calendar-text {
+  vertical-align: -webkit-baseline-middle;
+  margin: 0px 0px 0px -3px;
+}

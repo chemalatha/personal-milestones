@@ -1,0 +1,29 @@
+.alert {
+  margin-bottom: 0;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.seven-cols {
+  width: 14.285714285714285714285714285714%;
+}
+
+@media (max-width: 768px){
+  .seven-cols {
+    width: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .seven-cols {
+    width: 33.333333333333333333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .seven-cols {
+    width: 14.285714285714285714285714285714%;
+  }
+}

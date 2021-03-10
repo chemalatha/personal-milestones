@@ -1,0 +1,12 @@
+<div>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let milestone of milestones" appHover (click)="view(milestone.description)">
+      <div matLine class="result-header"> {{ milestone.activitycodes?.join(', ')}} </div>
+      <div matLine class="result-sub-header"> {{ milestone.month + '/' + milestone.day + '/' + milestone.year }} </div>
+      <div matLine class="result-body"> {{ milestone.description | appshorten : 150 : true }} </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div class="center-text" style="margin-top: 10px;" *ngIf="milestones.length === 0 && searched">
+  <span class="error-message">No milestone entries found</span>
+</div>

@@ -1,0 +1,3 @@
+<div class="calendar-sm" [title]="dateTooltip$ | async | date : 'fullDate'" (click)="viewEntries()">
+  <span class="calendar-text" [attr.aria-label]="displayDate">{{ label$ | async }}</span>
+</div>

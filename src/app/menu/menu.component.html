@@ -1,0 +1,17 @@
+<button mat-icon-button aria-label="Milestones menu button" role="menu" [matMenuTriggerFor]="milestonesMenu">
+  <mat-icon style="color: #F5F5F5;">menu</mat-icon>
+</button>
+<mat-menu #milestonesMenu="matMenu">
+  <button mat-menu-item routerLink="/calendar" routerLinkActive="active-route">
+    <mat-icon routerLinkActive="active-route">calendar_today</mat-icon>
+    <span>Calendar</span>
+  </button>
+  <button mat-menu-item routerLink="/search" routerLinkActive="active-route">
+    <mat-icon routerLinkActive="active-route">search</mat-icon>
+    <span>Search</span>
+  </button>
+  <button mat-menu-item (click)="onMenuClick('signout')">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Sign Out</span>
+  </button>
+</mat-menu>

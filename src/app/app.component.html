@@ -1,0 +1,6 @@
+<span *ngIf="isLoading$ | async"></span>
+<ngx-spinner bdColor="rgba(0,0,0,0.35)"></ngx-spinner>
+<app-header></app-header>
+<div class="container-fluid" (window:resize)="onResize()">
+  <router-outlet></router-outlet>
+</div>

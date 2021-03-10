@@ -1,0 +1,17 @@
+.milestones-logo {
+  color: #121212;
+  background-color: #F5C518;
+  padding: 1px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+}
+
+.milestones-member {
+  margin-left: 10px;
+  color: #fff;
+  font-size: 16px;
+  padding-top: 3px;
+}

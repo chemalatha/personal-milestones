@@ -1,0 +1,16 @@
+a {
+  color: #7C6600;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #7C6600 !important;
+}
+
+.milestone-content {
+  color: #121212;
+  text-align: justify;
+  white-space: pre-line;
+  word-wrap: break-word;
+}

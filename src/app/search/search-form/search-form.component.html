@@ -1,0 +1,59 @@
+<div class="row" style="text-align: -webkit-center;">
+  <mat-radio-group aria-label="Select a search type" [(ngModel)]="searchType" (change)="onRadioToggle($event)">
+    <mat-radio-button value="tag">Search with tags</mat-radio-button>
+    <mat-radio-button value="daterange">Search with date</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div *ngIf="searchType === 'tag'; else showDateRange">
+  <div class="row">
+    <mat-button-toggle-group [(ngModel)]="searchDepth" (change)="onButtonToggle($event)">
+      <mat-button-toggle value="all" aria-label="Exclude values">
+        Exclusive
+      </mat-button-toggle>
+      <mat-button-toggle value="in" aria-label="Include values">
+        Inclusive
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label style="color:#7C6600;">Search with</mat-label>
+      <mat-chip-list #chipList aria-label="Search milestones with tags">
+        <mat-chip *ngFor="let activitycode of activityCodesInput" [selectable]="true" [removable]="true"
+          (removed)="remove(activitycode)">
+          {{ activitycode }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Add tags to search ... " [matChipInputFor]="chipList"
+          [matAutocomplete]="autocompleteActivity" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)" (input)="onInput($event)" #activityInput>
+      </mat-chip-list>
+      <mat-autocomplete #autocompleteActivity="matAutocomplete" (optionSelected)="select($event)"
+        (optionActivated)="activate($event)">
+        <mat-option *ngFor="let activity of activities" [value]="activity">
+          {{ activity }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-hint style="font-weight: 900;">Use ENTER to add a new tag</mat-hint>
+    </mat-form-field>
+  </div>
+</div>
+<ng-template #showDateRange>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-4 col-lg-offset-4">
+      <mat-form-field appearance="outline">
+        <mat-label style="color:#7C6600;">Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate [(ngModel)]="searchStartDate" placeholder="Start date" (dateChange)="onEndDateChange()">
+          <input matEndDate [(ngModel)]="searchEndDate" placeholder="End date" (dateChange)="onEndDateChange()">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </div>
+</ng-template>
+<div class="row" style="text-align: center;">
+  <button mat-flat-button type="button" class="generic-btn" style="margin: 0 10px;" (click)="search()">Search</button>
+  <button mat-button type="reset" color="warn" style="margin: 0 10px;" (click)="reset()">Reset</button>
+</div>

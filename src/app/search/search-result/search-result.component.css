@@ -1,0 +1,23 @@
+.mat-list-item {
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.12);
+  margin: 2px 0;
+}
+
+.result-header {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  display: block;
+}
+
+.result-sub-header {
+  font-size: 12px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  display: block;
+}
+
+.result-body {
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.75) !important;
+  display: block;
+}

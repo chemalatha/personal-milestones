@@ -1,0 +1,15 @@
+<h3 class="dialog-header" mat-dialog-title><strong>Confirm Action</strong></h3>
+<hr>
+<mat-dialog-content>
+  <span style="margin: 10px 0;">{{ message }}</span>
+</mat-dialog-content>
+<hr>
+<div style="text-align: right;">
+  <button mat-button class="generic-btn" (click)="onDialogAction()" style="margin-left: 10px;">
+    Yes
+  </button>
+  <button mat-button mat-dialog-close color="warn" (click)="closeModal()" style="margin-left: 10px;"
+    type="reset">
+    No
+  </button>
+</div>

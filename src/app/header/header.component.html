@@ -1,0 +1,6 @@
+<mat-toolbar color="primary">
+  <div class="milestones-logo" routerLink="/calendar">milestones</div>
+  <div class="milestones-member">{{ fullName$ | async }}</div>
+  <div class="spacer"></div>
+  <app-menu (menuclick)="onMenuClick($event)" *ngIf="isAuthenticated$ | async"></app-menu>
+</mat-toolbar>

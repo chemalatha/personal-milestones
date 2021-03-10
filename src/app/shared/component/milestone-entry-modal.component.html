@@ -1,0 +1,59 @@
+<h3 class="dialog-header" mat-dialog-title>
+  <strong>{{ mode === 'create' ? 'Add Milestone' : 'Edit Milestone'}}</strong>
+</h3>
+<hr>
+<mat-dialog-content>
+  <div style="margin: 10px 0;">
+    <form [formGroup]="milestoneForm">
+      <div class="col-xs-12" style="margin-bottom: 10px;">
+        <mat-form-field appearance="outline">
+          <mat-label style="color:#7C6600;">Milestone Date</mat-label>
+          <input matInput [matDatepicker]="MilestoneDate" autocomplete="off" required formControlName="milestonedate"
+            [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="MilestoneDate"></mat-datepicker-toggle>
+          <mat-datepicker #MilestoneDate></mat-datepicker>
+          <mat-error
+            *ngIf="milestoneForm.get('milestonedate').hasError('required') || milestoneForm.get('milestonedate').hasError('matDatepickerParse')">
+            Milestone Date is a required field
+          </mat-error>
+          <mat-error *ngIf="milestoneForm.get('milestonedate').hasError('matDatepickerMax')">
+            Milestone Date cannot be later than today
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12" style="margin: 10px 0;">
+        <mat-form-field appearance="outline">
+          <mat-label style="color:#7C6600;">Tags</mat-label>
+          <mat-chip-list #chipList aria-label="Add tags to your milestone">
+            <mat-chip *ngFor="let activitycode of activityCodes" [selectable]="true" [removable]="true"
+              (removed)="remove(activitycode)" color="primary">
+              {{ activitycode }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="New tag..." [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-hint>Use ENTER or COMMA to add a new tag</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12" style="margin-top: 10px;">
+        <mat-form-field appearance="outline">
+          <mat-label style="color:#7C6600;">Description</mat-label>
+          <textarea matInput autocomplete="off" placeholder="Description" formControlName="description"
+            required="true" rows="8"></textarea>
+          <mat-error>Description is required</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<hr>
+<div style="text-align: right;">
+  <button mat-button class="generic-btn" (click)="onDialogAction()" style="margin-left: 10px;">
+    Save
+  </button>
+  <button mat-button mat-dialog-close color="warn" (click)="closeModal()" style="margin-left: 10px;" type="reset">
+    Cancel
+  </button>
+</div>

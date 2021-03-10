@@ -1,0 +1,26 @@
+<div class="row" *ngIf="errorMessage$ | async as errorMessage">
+  <div class="col-xs-12">
+    <div class="alert alert-danger alert-dismissible center-text" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Dismiss error" (click)="dismissError()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{{ 'Error! ' }}</strong>{{ errorMessage }}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-search-form [searchString]="searchString$ | async" [searchDepth]="searchDepth$ | async"
+      [searchType]="searchType$ | async" (searchFormSubmit)="search($event)" (searchFormReset)="reset()"
+      (searchTypeChange)="searchTypeChange($event)" (searchDepthChange)="searchDepthChange($event)"
+      (searchStringChange)="searchStringChange($event)" (searchStringInputChange)="searchStringInputChange($event)"
+      [activities]="activities$ | async">
+    </app-search-form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-search-result [milestones]="milestones$ | async" (viewMilestone)="view($event)"
+      [searched]="isSearched$ | async"></app-search-result>
+  </div>
+</div>

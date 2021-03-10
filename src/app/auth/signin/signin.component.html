@@ -1,0 +1,38 @@
+<div class="bg-img">
+  <mat-card class="ms-login-card">
+    <div>
+      <h2 class="login-header">&nbsp;Sign in to milestones&nbsp;</h2>
+    </div>
+    <p style="margin-bottom: 30px;"></p>
+    <form role="form" [formGroup]="signinForm" (ngSubmit)="onSignin()">
+      <mat-form-field appearance="outline" style="margin-bottom: 10px;">
+        <mat-label style="color:#7C6600;">Email</mat-label>
+        <input matInput required id="username" autocomplete="off" autofocus formControlName="username" type="email"
+          placeholder="Your registered email address">
+        <mat-icon matSuffix style="color:#7C6600;">person</mat-icon>
+        <mat-error *ngIf="signinForm.get('username').hasError('required')">
+          Email is a required field
+        </mat-error>
+        <mat-error *ngIf="signinForm.get('username').hasError('email')">
+          Email is not correctly formatted
+        </mat-error>
+      </mat-form-field>
+      <p></p>
+      <mat-form-field appearance="outline" style="margin: 10px 0;">
+        <mat-label style="color:#7C6600;">Password</mat-label>
+        <input matInput required type="password" id="password" autocomplete="off" formControlName="password"
+          placeholder="Your milestones account password">
+        <mat-icon matSuffix style="color:#7C6600;">lock</mat-icon>
+        <mat-error *ngIf="signinForm.get('password').hasError('required')">
+          Password is a required field
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="signin-btn" color="primary" type="submit" style="margin: 10px 0;">
+        {{ signinBtnText$ | async }}
+      </button>
+      <p style="margin-top: 5px;" class="center-text error-code" *ngIf="authErrorMessage$ | async as errorMessage">
+        {{ errorMessage }}
+      </p>
+    </form>
+  </mat-card>
+</div>

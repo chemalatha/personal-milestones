@@ -1,0 +1,31 @@
+.ms-login-card {
+  max-width: 375px;
+  background-color: #F9F4EC;
+  /* background: linear-gradient(90deg, #B19CD9, #616064); */
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+.signin-btn {
+  color: #fff;
+  width: 100%;
+  background: linear-gradient(90deg, #7C6600, #DACFA1);
+}
+
+.login-header {
+  text-align: center;
+  color: #7C6600;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #7C6600 !important;
+}

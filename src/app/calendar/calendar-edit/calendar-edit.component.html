@@ -1,0 +1,56 @@
+<div class="row" *ngIf="errorMessage$ | async as errorMessage">
+  <div class="col-xs-12">
+    <div class="alert alert-danger alert-dismissible center-text" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Dismiss error" (click)="dismissError()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{{ 'Error! ' }}</strong>{{ errorMessage }}
+    </div>
+  </div>
+</div>
+<div class="row" style="display: flex;">
+  <button mat-icon-button class="generic-icon-alt-btn" aria-label="Go to previous day" title="Previous Day"
+    (click)="goToPreviousDay()" [disabled]="day === min">
+    <mat-icon style="margin-left: -8px;">keyboard_arrow_left</mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <div class="center-text" style="font-size: 18px; margin-top: 10px;">
+    <strong><span>{{ getCurrentDisplayDayDate$ | async }}</span></strong>
+  </div>
+  <span class="spacer"></span>
+  <button mat-icon-button class="generic-icon-alt-btn" aria-label="Go to next day" title="Next Day"
+    (click)="goToNextDay()" [disabled]="day === max">
+    <mat-icon style="margin-left: -8px;">keyboard_arrow_right</mat-icon>
+  </button>
+</div>
+<div class="row">
+  <div class="col-xs-12 center-text">
+    <button mat-fab class="generic-btn" aria-label="Add new entry" title="Add new entry" (click)="onAddMilestone()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div *ngIf="milestones$ | async as milestones">
+    <div *ngIf="milestones.length &gt; 0; else nodata">
+      <div *ngFor="let milestone of milestones" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin: 10px 0;">
+        <app-calendar-edit-item [milestone]="milestone" [formFactor]="formFactor$ | async"
+          (editMilestone)="onEditMilestone($event)" (deleteMilestone)="onDeleteMilestone($event)"
+          (viewMilestone)="onViewMilestone($event)"></app-calendar-edit-item>
+      </div>
+    </div>
+    <ng-template #nodata>
+      <div class="center-text" style="margin-top: 10px;">
+        <span class="error-message">No milestone entries found</span>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 center-text" style="font-size: 22px; margin-top: 10px;">
+    <button mat-fab class="generic-alt-btn" aria-label="Back to calendar view" title="Back to calendar view"
+      routerLink="/calendar">
+      <mat-icon>calendar_today</mat-icon>
+    </button>
+  </div>
+</div>
